@@ -24,6 +24,11 @@
       var(--button-border-color, var(--clr-neutral-900));
     background-color: var(--button-background-color, var(--clr-neutral-100));
     color: var(--button-text-color, var(--clr-neutral-900));
+
+    &:hover {
+      background-color: var(--button-background-color, var(--clr-neutral-800));
+      color: var(--button-text-color, var(--clr-neutral-100));
+    }
   }
 }
 </style>
