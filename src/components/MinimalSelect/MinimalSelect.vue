@@ -10,13 +10,13 @@ type SelectOption = {
 type Props = {
   id?: string;
   buttonPlaceholder?: string;
-  options: SelectOption[];
+  options?: SelectOption[];
   modelValue?: string;
   multiselect?: boolean;
 };
 
 const props = withDefaults(defineProps<Props>(), {
-  id: crypto.randomUUID(),
+  id: 'select-id',
   buttonPlaceholder: 'Placeholder',
   options: () => [],
   multiselect: false,
@@ -75,6 +75,7 @@ function handleArrowsDown(code: 'ArrowUp' | 'ArrowDown') {
 
 function closeDropdown() {
   open.value = false;
+  higlightedIndex.value = 0;
 }
 
 function toggleListVisibility() {
