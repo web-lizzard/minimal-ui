@@ -47,7 +47,7 @@ function handleKeyDown(e: KeyboardEvent) {
       handleSelectOption(props.options[higlightedIndex.value].value);
       break;
     case 'Escape':
-      open.value = false;
+      closeDropdown();
       break;
     case 'ArrowDown':
     case 'ArrowUp':
@@ -73,13 +73,17 @@ function handleArrowsDown(code: 'ArrowUp' | 'ArrowDown') {
   higlightedIndex.value += newValue;
 }
 
+function closeDropdown() {
+  open.value = false;
+}
+
 function toggleListVisibility() {
   open.value = !open.value;
 }
 
 function handleSelectOption(value: string) {
   emit('update:modelValue', value);
-  open.value = false;
+  closeDropdown();
 }
 
 function higlightOption(index: number) {
@@ -88,7 +92,7 @@ function higlightOption(index: number) {
 </script>
 
 <template>
-  <div class="minimal-select">
+  <div class="minimal-select" v-click-outside="closeDropdown">
     <MinimalButton
       @keydown="handleKeyDown"
       class="flex | minimal-select__button"
@@ -158,8 +162,8 @@ function higlightOption(index: number) {
   }
 
   &__item {
-    padding-block: var(--spacing-8);
-    padding-inline: var(--spacing-4);
+    padding-block: var(--select-item-padding-block, var(--spacing-8));
+    padding-inline: var(--select-item-padding-inline, var(--spacing-4));
     cursor: pointer;
 
     &:hover {
