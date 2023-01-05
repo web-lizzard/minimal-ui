@@ -1,3 +1,6 @@
+
+import { app } from '@storybook/vue3'
+import { clickOutside } from "@/utils/directives/clickOutside"
 import "scss/index.scss";
 
 export const parameters = {
@@ -9,3 +12,5 @@ export const parameters = {
     },
   },
 }
+
+app.directive('click-outside', clickOutside)
