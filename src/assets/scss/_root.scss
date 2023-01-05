@@ -1,0 +1,20 @@
+@use 'abstracts/mixins';
+@use "abstracts/variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+    @include mixins.generate-css-variables(variables.$colors, 'clr');
+    @include mixins.generate-css-variables(variables.$spacing, 'space');
+
+    --ff-sans-serif: 'Poppins', sans-serif;
+
+    --clr-body: var(--clr-neutral-100);
+    --ff-body: var(--ff-sans-serif);
+}
+
+body {
+    background-color: var(--clr-body);
+    font-family: var(--ff-body);
+    font-size: 1.6rem;
+}

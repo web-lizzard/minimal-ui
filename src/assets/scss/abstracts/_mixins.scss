@@ -1,0 +1,7 @@
+@use 'variables';
+
+@mixin generate-css-variables($map, $prefix) {
+    @each $key, $value in $map {
+       --#{$prefix}-#{$key}: #{$value};
+    }
+}
