@@ -17,7 +17,7 @@ type Props = {
 };
 
 const props = withDefaults(defineProps<Props>(), {
-  namespace: 'select-id',
+  namespace: 'select-namespace',
   buttonPlaceholder: 'Placeholder',
   options: () => [],
   multiselect: false,
@@ -152,7 +152,7 @@ function higlightOption(index: number) {
     font-size: var(--select-label-font-size, var(--fs-300));
     cursor: pointer;
     display: block;
-    margin-block-end: var(--select-label-margin-block-end, var(--spacing-4));
+    margin-block-end: var(--select-label-margin-block-end, var(--spacing-8));
   }
   
 
