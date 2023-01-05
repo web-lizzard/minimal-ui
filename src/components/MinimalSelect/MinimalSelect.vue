@@ -8,18 +8,20 @@ type SelectOption = {
 };
 
 type Props = {
-  id?: string;
+  namespace?: string;
   buttonPlaceholder?: string;
   options?: SelectOption[];
   modelValue?: string;
   multiselect?: boolean;
+  labelText?: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
-  id: 'select-id',
+  namespace: 'select-id',
   buttonPlaceholder: 'Placeholder',
   options: () => [],
   multiselect: false,
+  labelText: "Label for select component"
 });
 
 const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>();
@@ -34,6 +36,10 @@ const currentItem = computed(() =>
 const placeholder = computed(
   () => currentItem.value?.label || props.buttonPlaceholder
 );
+
+const buttonId = `${props.namespace}-button`
+const labelId = `${props.namespace}-label`
+const listId = `${props.namespace}-list`
 
 function handleKeyDown(e: KeyboardEvent) {
   e.preventDefault();
@@ -94,29 +100,34 @@ function higlightOption(index: number) {
 
 <template>
   <div class="minimal-select" v-click-outside="closeDropdown">
+    <label class="minimal-select__label" :id="labelId" :for="buttonId"> {{ labelText }} </label>
     <MinimalButton
       @keydown="handleKeyDown"
+      :id="buttonId"
+      :aria-describedby="labelId"
+      :aria-label="labelText"
       class="flex | minimal-select__button"
       data-alternative
       :aria-expanded="open"
       aria-haspopup="listbox"
-      :aria-controls="id"
+      :aria-controls="listId"
       :aria-activedescendant="currentItem?.label || ''"
       role="combobox"
       @click="toggleListVisibility"
       ><span>{{ placeholder }} </span>
-      <span aria-hidden="true" :data-opened="open" class="minimal-select__arrow"
+      <span aria-hidden="true" role="presentation" :data-opened="open" class="minimal-select__arrow"
         >&#8594;</span
       >
     </MinimalButton>
     <ul
-      :id="id"
+      :id="listId"
       :aria-multiselectable="multiselect"
       v-show="open"
       class="minimal-select__listbox"
       role="listbox"
     >
       <li
+        tabindex="-1"
         role="option"
         class="minimal-select__item"
         v-for="(option, index) in options"
@@ -136,6 +147,14 @@ function higlightOption(index: number) {
 .minimal-select {
   position: relative;
   max-width: var(--select-max-width, min(24rem, 100%));
+
+  &__label {
+    font-size: var(--select-label-font-size, var(--fs-300));
+    cursor: pointer;
+    display: block;
+    margin-block-end: var(--select-label-margin-block-end, var(--spacing-4));
+  }
+  
 
   &__button {
     --button-padding-block: var(--spacing-4);
