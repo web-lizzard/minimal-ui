@@ -6,6 +6,7 @@
 :root {
     @include mixins.generate-css-variables(variables.$colors, 'clr');
     @include mixins.generate-css-variables(variables.$spacing, 'space');
+    @include mixins.generate-css-variables(variables.$font-sizes, 'fs');
 
     --ff-sans-serif: 'Poppins', sans-serif;
 
