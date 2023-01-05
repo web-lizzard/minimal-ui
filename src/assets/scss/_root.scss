@@ -5,7 +5,7 @@
 
 :root {
     @include mixins.generate-css-variables(variables.$colors, 'clr');
-    @include mixins.generate-css-variables(variables.$spacing, 'space');
+    @include mixins.generate-css-variables(variables.$spacing, 'spacing');
     @include mixins.generate-css-variables(variables.$font-sizes, 'fs');
 
     --ff-sans-serif: 'Poppins', sans-serif;
@@ -18,4 +18,12 @@ body {
     background-color: var(--clr-body);
     font-family: var(--ff-body);
     font-size: 1.6rem;
+}
+
+:is(a, button, input, textarea, summary):focus {
+    outline:
+      var(--outline-size, max(2px, 0.08em))
+      var(--outline-style, solid)
+      var(--outline-color, var(--clr-neutral-900));
+    outline-offset: var(--outline-offset, 0.6rem);
 }
