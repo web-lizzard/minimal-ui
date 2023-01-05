@@ -1,3 +1,8 @@
+
+import { app } from '@storybook/vue3'
+import { clickOutside } from "@/utils/directives/clickOutside"
+import "scss/index.scss";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -7,3 +12,5 @@ export const parameters = {
     },
   },
 }
+
+app.directive('click-outside', clickOutside)
