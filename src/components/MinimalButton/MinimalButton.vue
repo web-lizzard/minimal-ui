@@ -1,7 +1,10 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineEmits<{ (e: 'click'): void }>();
+
+</script>
 
 <template>
-  <button data-alternative class="minimal-button">
+  <button @click="$emit('click')" data-alternative class="minimal-button">
     <slot>placeholder</slot>
   </button>
 </template>
@@ -29,6 +32,14 @@
       background-color: var(--button-background-color, var(--clr-neutral-800));
       color: var(--button-text-color, var(--clr-neutral-100));
     }
+  }
+
+  &[data-circle="true"] {
+    padding-block: var(--button-padding-block, 0);
+    padding-inline: var(--button-padding-inline, 0);
+    min-width: var(--button-width, min(100%, 5rem));
+    aspect-ratio: 1;
+    border-radius: 100vmax;
   }
 }
 </style>
