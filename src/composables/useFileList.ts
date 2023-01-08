@@ -44,11 +44,9 @@ export class UploadableFile {
   public name;
 
   constructor(file: File) {
-    console.log(file);
     this.file = file;
     this.name = file.name ?? '';
     this.id = `${file.name}-${file.size}-${file.lastModified}-${file.type}`;
     this.url = URL.createObjectURL(file);
-    console.log(this.url);
   }
 }

@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{ (e: 'remove', file: UploadableFile): void }>();
 
 function checkFileType(file: File) {
+  console.log(file);
   return file.type.startsWith('image/');
 }
 
@@ -20,11 +21,11 @@ function onRemoveButtonClick(file: UploadableFile) {
   emit('remove', file);
 }
 
-function onMouseEnter(e: Event) {
+function playVideo(e: Event) {
   (e.target as HTMLVideoElement).play();
 }
 
-function onMouseLeave(e: Event) {
+function pauseVideo(e: Event) {
   (e.target as HTMLVideoElement).pause();
 }
 </script>
@@ -33,30 +34,30 @@ function onMouseLeave(e: Event) {
   <ul class="grid | minimal-file-preview">
     <li
       class="flex | minimal-file-preview__item"
-      v-for="file in files"
-      :key="file.id"
+      v-for="item in files"
+      :key="item.id"
     >
       <img
-        v-if="checkFileType(file.file)"
+        v-if="checkFileType(item.file)"
         class="minimal-file-preview__file"
-        :src="file.url"
-        :alt="file.name"
+        :src="item.url"
+        :alt="item.name"
       />
       <video
         v-else
         muted
         loop
         tabindex="0"
-        @focus="onMouseEnter"
-        @blur="onMouseLeave"
-        @mouseenter="onMouseEnter"
-        @mouseleave="onMouseLeave"
+        @focus="playVideo"
+        @blur="pauseVideo"
+        @mouseenter="playVideo"
+        @mouseleave="pauseVideo"
         class="focusable | minimal-file-preview__file"
       >
-        <source :src="file.url" />
+        <source :src="item.url" />
       </video>
       <MinimalButton
-        @click="onRemoveButtonClick(file)"
+        @click="onRemoveButtonClick(item)"
         data-circle="true"
         class="minimal-file-preview__button"
         aria-label="Delete file from list"

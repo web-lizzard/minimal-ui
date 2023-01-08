@@ -17,7 +17,7 @@
 body {
     background-color: var(--clr-body);
     font-family: var(--ff-body);
-    font-size: 1.6rem;
+    font-size: var(--fs-400);
 }
 
 :is(a, button, input, textarea, summary, .focusable):focus {
