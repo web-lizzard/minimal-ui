@@ -6,14 +6,13 @@ type Props = {
   files: UploadableFile[];
 };
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   files: () => [],
 });
 
 const emit = defineEmits<{ (e: 'remove', file: UploadableFile): void }>();
 
-function checkFileType(file: File) {
-  console.log(file);
+function checkIsImage(file: File) {
   return file.type.startsWith('image/');
 }
 
@@ -38,7 +37,7 @@ function pauseVideo(e: Event) {
       :key="item.id"
     >
       <img
-        v-if="checkFileType(item.file)"
+        v-if="checkIsImage(item.file)"
         class="minimal-file-preview__file"
         :src="item.url"
         :alt="item.name"
