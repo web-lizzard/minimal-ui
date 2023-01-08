@@ -17,10 +17,10 @@
 body {
     background-color: var(--clr-body);
     font-family: var(--ff-body);
-    font-size: 1.6rem;
+    font-size: var(--fs-400);
 }
 
-:is(a, button, input, textarea, summary):focus {
+:is(a, button, input, textarea, summary, .focusable):focus {
     outline:
       var(--outline-size, max(2px, 0.08em))
       var(--outline-style, solid)

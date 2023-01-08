@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MinimalDropZone from './components/MinimalDropZone/MinimalDropZone.vue';
-import MinimalFilePreview from './components/MinimalFilePreview/MinimalFilePreview.vue';
-import { useFileList } from './composables/useFileList';
+import MinimalDropZone from '@/components/MinimalDropZone/MinimalDropZone.vue';
+import MinimalFilePreview from '@/components/MinimalFilePreview/MinimalFilePreview.vue';
+import { useFileList } from '@/composables/useFileList';
 
 const { addFiles, removeFile, files } = useFileList();
 </script>

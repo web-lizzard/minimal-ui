@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   buttonPlaceholder: 'Placeholder',
   options: () => [],
   multiselect: false,
-  labelText: "Label for select component"
+  labelText: 'Label for select component',
 });
 
 const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>();
@@ -37,9 +37,9 @@ const placeholder = computed(
   () => currentItem.value?.label || props.buttonPlaceholder
 );
 
-const buttonId = `${props.namespace}-button`
-const labelId = `${props.namespace}-label`
-const listId = `${props.namespace}-list`
+const buttonId = `${props.namespace}-button`;
+const labelId = `${props.namespace}-label`;
+const listId = `${props.namespace}-list`;
 
 function handleKeyDown(e: KeyboardEvent) {
   e.preventDefault();
@@ -100,7 +100,9 @@ function higlightOption(index: number) {
 
 <template>
   <div class="minimal-select" v-click-outside="closeDropdown">
-    <label class="minimal-select__label" :id="labelId" :for="buttonId"> {{ labelText }} </label>
+    <label class="minimal-select__label" :id="labelId" :for="buttonId">
+      {{ labelText }}
+    </label>
     <MinimalButton
       @keydown="handleKeyDown"
       :id="buttonId"
@@ -115,7 +117,11 @@ function higlightOption(index: number) {
       role="combobox"
       @click="toggleListVisibility"
       ><span>{{ placeholder }} </span>
-      <span aria-hidden="true" role="presentation" :data-opened="open" class="minimal-select__arrow"
+      <span
+        aria-hidden="true"
+        role="presentation"
+        :data-opened="open"
+        class="minimal-select__arrow"
         >&#8594;</span
       >
     </MinimalButton>
@@ -154,7 +160,6 @@ function higlightOption(index: number) {
     display: block;
     margin-block-end: var(--select-label-margin-block-end, var(--spacing-8));
   }
-  
 
   &__button {
     --button-padding-block: var(--spacing-4);
