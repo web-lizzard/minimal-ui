@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 defineEmits<{ (e: 'click'): void }>();
-
 </script>
 
 <template>
@@ -34,7 +33,7 @@ defineEmits<{ (e: 'click'): void }>();
     }
   }
 
-  &[data-circle="true"] {
+  &[data-circle='true'] {
     padding-block: var(--button-padding-block, 0);
     padding-inline: var(--button-padding-inline, 0);
     min-width: var(--button-width, min(100%, 5rem));

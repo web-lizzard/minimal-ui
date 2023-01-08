@@ -3,8 +3,7 @@ import MinimalDropZone from './components/MinimalDropZone/MinimalDropZone.vue';
 import MinimalFilePreview from './components/MinimalFilePreview/MinimalFilePreview.vue';
 import { useFileList } from './composables/useFileList';
 
-const { addFiles, removeFile, files } = useFileList()
-
+const { addFiles, removeFile, files } = useFileList();
 </script>
 
 <template>
@@ -15,7 +14,7 @@ const { addFiles, removeFile, files } = useFileList()
 </template>
 
 <style scoped>
-  div {
-    padding: 5rem;
-  }
+div {
+  padding: 5rem;
+}
 </style>

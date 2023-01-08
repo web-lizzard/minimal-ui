@@ -14,6 +14,6 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'vuejs-accessibility/click-events-have-key-events': false,
+    'vuejs-accessibility/click-events-have-key-events': 0,
   },
 };
